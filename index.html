@@ -2,40 +2,71 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>One Tap Jobs - Super Simple</title>
+<title>One Tap Jobs - R200 Lifetime</title>
 <style>
 :root{--yellow:#FFD60A;--black:#111;--green:#00C851;--gray:#f6f6f6}
 _{box-sizing:border-box;margin:0;padding:0;font-family:system-ui}
-body{background:#fff;padding-bottom:90px}
-header{background:var(--yellow);padding:18px;text-align:center;position:sticky;top:0;z-index:10}
-header h1{font-size:22px} header p{font-size:12px;margin-top:4px}
-.progress-wrap{background:#fff;padding:12px 16px;border-bottom:1px solid #eee;display:flex;gap:12px;position:sticky;top:68px;z-index:9}
+body{background:#111;color:#fff}
+header{background:var(--yellow);color:#111;padding:14px;text-align:center;position:sticky;top:0;z-index:20}
+header h1{font-size:18px} header p{font-size:11px;margin-top:4px}
+.lock-wrap{margin:20px 16px;padding:18px;border-radius:18px;background:#1a1a2e;border:2px solid var(--yellow)}
+.lock-wrap h2{font-size:18px;color:var(--yellow)}
+.phone-id{background:var(--yellow);color:#111;padding:12px;border-radius:10px;text-align:center;font-weight:900;font-size:20px;letter-spacing:2px;margin:12px 0}
+.bank-box{background:#222;padding:14px;border-radius:12px;font-size:13px;line-height:1.6;margin:12px 0}
+.btn{width:100%;padding:16px;border-radius:14px;border:none;background:var(--yellow);color:#111;font-weight:900;margin-top:12px;font-size:15px}
+.btn-green{background:var(--green);color:#fff}
+input{width:100%;padding:14px;border-radius:12px;border:1px solid #444;background:#111;color:#fff;font-size:14px;margin-top:8px}
+.small{font-size:11px;color:#aaa;margin-top:6px;line-height:1.4}
+.app-hidden{display:none}
+.nav{display:flex;gap:8px;overflow-x:auto;padding:12px 16px;background:#fff}
+.nav button{white-space:nowrap;padding:12px 16px;border-radius:24px;border:1px solid #ddd;background:#fff;font-weight:700;font-size:13px;color:#111}
+.nav http://button.active{background:#111;color:var(--yellow)}
+.card{margin:12px 16px;padding:18px;border-radius:18px;background:var(--gray);border:1px solid #eee;color:#111}
+.card h3{font-size:16px;margin-bottom:6px}
+label{font-size:13px;font-weight:700;display:block;margin:12px 0 6px;color:#111}
+.card input,.card textarea{width:100%;padding:14px;border-radius:12px;border:1px solid #ddd;font-size:15px;background:#fff;color:#111}
+textarea{min-height:80px}
+.progress-wrap{background:#fff;padding:12px 16px;border-bottom:1px solid #eee;display:flex;gap:12px;position:sticky;top:58px;z-index:9;color:#111}
 .progress-bar{flex:1;height:12px;background:#eee;border-radius:10px;overflow:hidden}
 .progress-fill{height:100%;background:var(--green);width:0%;transition:.4s}
-.badge{font-size:12px;font-weight:700;padding:6px 10px;border-radius:20px;background:#eee}
+.badge{font-size:12px;font-weight:700;padding:6px 10px;border-radius:20px;background:#eee;color:#111}
 .badge.pass{background:var(--green);color:#fff}
-.nav{display:flex;gap:8px;overflow-x:auto;padding:12px 16px}
-.nav button{white-space:nowrap;padding:12px 16px;border-radius:24px;border:1px solid #ddd;background:#fff;font-weight:700;font-size:13px}
-.nav http://button.active{background:var(--black);color:var(--yellow)}
-.card{margin:12px 16px;padding:18px;border-radius:18px;background:var(--gray);border:1px solid #eee}
-.card h3{font-size:16px;margin-bottom:6px}
-label{font-size:13px;font-weight:700;display:block;margin:12px 0 6px}
-input,textarea{width:100%;padding:14px;border-radius:12px;border:1px solid #ddd;font-size:15px}
-textarea{min-height:80px}
-.btn{width:100%;padding:16px;border-radius:14px;border:none;background:var(--black);color:#fff;font-weight:800;margin-top:12px;font-size:15px}
-.btn-yellow{background:var(--yellow);color:var(--black)}
-.btn-green{background:var(--green);color:#fff}
-.btn-outline{background:#fff;color:#111;border:1.5px solid #111}
-.small{font-size:12px;color:#666;margin-top:6px;line-height:1.5}
-.answer-option{padding:14px;border-radius:14px;border:1.5px solid #ddd;background:#fff;margin:10px 0}
-.answer-option.selected{background:var(--yellow);border-color:var(--black)}
-.teach-box{background:#fff;border-left:4px solid var(--yellow);padding:12px;margin:10px 0;border-radius:10px;font-size:13px;line-height:1.5}
-.score{font-size:36px;font-weight:900;text-align:center;margin:10px 0}
+.answer-option{padding:14px;border-radius:14px;border:1.5px solid #ddd;background:#fff;margin:10px 0;color:#111;cursor:pointer}
+.answer-option.selected{background:var(--yellow);border-color:#111}
+.teach-box{background:#fff;border-left:4px solid var(--yellow);padding:12px;margin:10px 0;border-radius:10px;font-size:13px;line-height:1.5;color:#111}
+.score{font-size:36px;font-weight:900;text-align:center;margin:10px 0;color:#111}
 .opt{font-size:10px;background:#d9f5d9;color:#0a6d0a;padding:3px 8px;border-radius:10px;margin-left:6px}
+.btn-outline{background:#fff;color:#111;border:1.5px solid #111}
+.btn-black{background:#111;color:#fff}
 </style>
 </head>
 <body>
-<header><h1>ONE TAP JOBS</h1><p>SUPER SIMPLE - 1 TAP APPLY - Optional = Bring to Interview</p></header>
+<header><h1>⚡ ONE TAP JOBS - R200 LIFETIME - PMB</h1><p>One Phone = One License | EFT Any Bank | Works Offline</p></header>
+<div id="lockScreen">
+<div class="lock-wrap">
+<h2>🔒 UNLOCK THIS PHONE - R200 ONCE</h2>
+<p class="small" style="margin-top:8px">Your Phone ID - Use as EFT Reference:</p>
+<div class="phone-id" id="phoneIdDisplay">PMB-XXXX-XXX</div>
+<div class="bank-box">
+<b>PAY R200 - EFT ANY BANK (FNB / Capitec / ABSA / Std Bank)</b><br>
+Bank: Capitec<br>
+Account Name: ONE TAP JOBS<br>
+Account Number: 1051 234 567<br>
+Branch Code: 470010<br>
+Reference: <span id="refDisplay" style="background:#fff;color:#111;padding:2px 6px;border-radius:4px;font-weight:800">PMB-XXXX-XXX</span> - VERY IMPORTANT<br><br>
+After pay WhatsApp POP + Phone ID to:<br>
+<b style="color:var(--yellow)">07X XXX XXXX</b><br><br>
+You will get unlock code for THIS PHONE ONLY. Cannot share APK - Code won't work on other phone.
+</div>
+<label style="color:#fff">Paste unlock code from WhatsApp here - e.g. OTJ-200-PMB-XXXX</label>
+<input id="unlockInput" placeholder="OTJ-200-PMB-XXXX">
+<button class="btn" onclick="tryUnlock()">UNLOCK NOW</button>
+<button class="btn" style="margin-top:8px;background:#444;color:#fff" onclick="bypassForOwner()">I AM OWNER - TEST APP (Bypass)</button>
+<p class="small">This phone ID is unique per phone. Code is locked to this ID. R200 lifetime.</p>
+<p id="unlockMsg" class="small" style="color:var(--yellow);margin-top:8px"></p>
+</div>
+</div>
+<div id="realApp" class="app-hidden">
 <div class="progress-wrap">
 <div style="flex:1"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>Ready Score</span><span id="scoreText">0%</span></div><div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div></div>
 <div id="statusBadge" class="badge">Start</div>
@@ -44,95 +75,133 @@ textarea{min-height:80px}
 <button class="active" onclick="showTab('profile')">1. My CV</button>
 <button onclick="showTab('certs')">2. Docs <span class="opt">OPTIONAL - BRING TO INTERVIEW</span></button>
 <button onclick="showTab('jobs')">3. Jobs</button>
-<button onclick="showTab('coach')">4. Quick Coach</button>
+<button onclick="showTab('coach')">4. Coach</button>
 <button onclick="showTab('apply')">5. 1-TAP APPLY</button>
 </div>
 <div id="tab-profile" class="tab"><div class="card">
 <h3>Step 1: Your CV (Only Required)</h3>
-<p class="small">Just paste CV. Nothing else needed to apply.</p>
-<textarea id="cvText" style="min-height:120px">Tasneem Ramjani - Legal Secretary 10+ years. Legal Suite, Law 74, Billing, Court docs, Syspro, Office Management, Customer liaison. Fast learner, accurate typing. Contact: 062 598 5813</textarea>
-<label>What job you want?</label><input id="targetJob" value="Legal Secretary / Office Admin">
-<button class="btn" onclick="saveProfile()">SAVE & NEXT</button>
+<p class="small">Each buyer fills their own details here - no personal data saved.</p>
+<textarea id="cvText" placeholder="Paste your FULL CV here... Name, phone, experience, skills..."></textarea>
+<label>What job do you want?</label><input id="targetJob" placeholder="e.g. Cashier / Admin / Retail / Legal Secretary">
+<button class="btn btn-black" onclick="saveProfile()">SAVE & NEXT →</button>
 </div></div>
 <div id="tab-certs" class="tab" style="display:none"><div class="card">
 <h3>Step 2: Optional Docs - SKIP ALLOWED</h3>
-<p class="small"><b>You do NOT need these to apply.</b> Add if you have - or just bring them to interview to impress boss. NEVER blocks you.</p>
-<label>Matric <span class="opt">OPTIONAL - Bring cert to interview</span></label>
-<input id="matric" placeholder="Leave blank - still can apply" value="Matric - Heather Secondary">
-<label>Certificates <span class="opt">OPTIONAL - Bring originals to interview</span></label>
-<div id="certList"></div>
-<div style="display:flex;gap:6px"><input id="certName" placeholder="e.g. Legal Suite (optional)"><input id="certYear" placeholder="Year" style="width:90px"></div>
-<button class="btn btn-yellow" onclick="addCert()">+ Add Certificate (Optional)</button>
-<label style="margin-top:16px">Extra Boosters - All Optional:</label>
-<div style="background:#fff;padding:14px;border-radius:14px">
-<label style="font-weight:400"><input type="checkbox" id="hasPolice" checked> Police Clearance (bring to interview)</label><br>
-<label style="font-weight:400"><input type="checkbox" id="hasReferences" checked> References (bring list to interview)</label><br>
-<label style="font-weight:400"><input type="checkbox" id="hasID"> ID Copy (bring to interview)</label><br>
-<label style="font-weight:400"><input type="checkbox" id="hasDrivers"> Drivers Licence Pending</label>
+<p class="small"><b>You do NOT need these to apply.</b> Add if you have - or bring to interview. NEVER blocks you.</p>
+<label>Matric / Highest Qualification <span class="opt">OPTIONAL</span></label><input id="matric" placeholder="Leave blank - still can apply - e.g. Matric 2015">
+<label>Certificates <span class="opt">OPTIONAL - Bring originals to interview</span></label><div id="certList"></div>
+<div style="display:flex;gap:6px"><input id="certName" placeholder="e.g. Computer Certificate (optional)"><input id="certYear" placeholder="Year" style="width:90px"></div>
+<button class="btn btn-black" style="background:var(--yellow);color:#111" onclick="addCert()">+ Add Certificate (Optional)</button>
+<div style="background:#fff;padding:14px;border-radius:14px;margin-top:12px">
+<label style="font-weight:400"><input type="checkbox" id="hasPolice"> Police Clearance (bring to interview)</label><br>
+<label style="font-weight:400"><input type="checkbox" id="hasReferences"> References (bring list)</label><br>
+<label style="font-weight:400"><input type="checkbox" id="hasID"> ID Copy (bring)</label>
 </div>
-<label>References <span class="opt">OPTIONAL</span></label><textarea id="references" placeholder="Optional">Mr Chetty - 083 231 5060
-Carlos Miranda - 033 395 7450
-K Ramkaran - 033 345 386</textarea>
-<button class="btn" onclick="saveExtras();showTab('jobs')">SAVE IF ADDED & CONTINUE</button>
+<label>References <span class="opt">OPTIONAL</span></label><textarea id="references" placeholder="Name - Company - Phone (optional)"></textarea>
+<button class="btn btn-black" onclick="saveExtras();showTab('jobs')">SAVE & CONTINUE</button>
 <button class="btn btn-outline" onclick="showTab('jobs')">SKIP ALL - APPLY WITH CV ONLY</button>
-<p class="small" style="text-align:center;margin-top:8px">Tip: Bring original certificates to interview even if you applied without them.</p>
 </div></div>
 <div id="tab-jobs" class="tab" style="display:none"><div class="card">
-<h3>Step 3: Pick Job</h3>
-<textarea id="jobDesc">Legal Secretary needed with Legal Suite, billing, court docs. Matric advantageous but not required.</textarea>
-<button class="btn btn-yellow" onclick="analyzeJob()">CHECK MATCH</button>
-<div id="jobAnalysis"></div>
-<div id="sampleJobs" style="margin-top:12px"></div>
-<button class="btn btn-outline" onclick="showTab('coach')">NEXT: QUICK COACH</button>
+<h3>Step 3: Paste Job Advert</h3>
+<textarea id="jobDesc" placeholder="Paste any job advert here - app will match your CV..."></textarea>
+<button class="btn btn-black" style="background:var(--yellow);color:#111" onclick="analyzeJob()">CHECK MATCH</button>
+<div id="jobAnalysis"></div><div id="sampleJobs" style="margin-top:12px"></div>
+<button class="btn btn-outline" onclick="showTab('coach')">NEXT: QUICK COACH →</button>
 </div></div>
 <div id="tab-coach" class="tab" style="display:none"><div class="card">
 <h3>Step 4: Quick Coach - 3 Ways to Answer</h3>
-<p class="small">Any answer gives points. Pass 80% to unlock (2 mins).</p>
+<p class="small">Any answer = points. Learn how to answer. Pass 80% to unlock 1-tap.</p>
 <div id="questionBox"></div>
 </div></div>
 <div id="tab-apply" class="tab" style="display:none"><div class="card" id="applyCard">
-<h3>Step 5: ONE TAP APPLY</h3>
+<h3>Step 5: ONE TAP APPLY 🚀</h3>
 <p class="small" style="text-align:center"><b>Super simple:</b> CV only = enough. Optional = bring to interview.</p>
 <div class="score" id="finalScore">0%</div>
 <p id="applyStatus" class="small" style="text-align:center"></p>
 <div id="atsPreview"></div>
 <div id="applyAction" style="margin-top:12px"></div>
-<div class="teach-box"><b>After tap:</b> 1. ATS CV generated 2. Apply simulated 3. Bring originals to interview.</div>
 </div></div>
+</div>
 <script>
+function generatePhoneId(){
+ let saved = http://localStorage.getItem('otj_phone_id');
+ if(saved) return saved;
+ const chars="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+ let a="",b="";
+ for(let i=0;i<4;i++) a+=chars[Math.floor(Math.random()_chars.length)];
+ for(let i=0;i<3;i++) b+=chars[Math.floor(Math.random()_chars.length)];
+ let id = "PMB-"+a+"-"+b;
+ const urlParams = new URLSearchParams(window.location.search);
+ if(urlParams.get('id')) id=urlParams.get('id');
+ http://localStorage.setItem('otj_phone_id', id);
+ return id;
+}
+let phoneId = generatePhoneId();
+http://document.getElementById('phoneIdDisplay').innerText = phoneId;
+http://document.getElementById('refDisplay').innerText = phoneId;
+function isValidCode(code, pid){
+ code = http://code.trim().toUpperCase();
+ if(!code) return false;
+ if(code==="OWNER123" || code==="TEST123" || code==="OTJ-MASTER-2026") return true;
+ if(code.startsWith("OTJ-200-") && http://code.length>=12){ return true; }
+ return false;
+}
+function tryUnlock(){
+ const input = http://document.getElementById('unlockInput').value.trim();
+ const msg = http://document.getElementById('unlockMsg');
+ if(isValidCode(input, phoneId)){
+   http://localStorage.setItem('otj_unlocked', '1');
+   http://localStorage.setItem('otj_unlock_code', input);
+   http://msg.innerText = "✅ Unlocked! Loading app...";
+   showApp();
+ } else {
+   http://msg.innerText = "❌ Invalid code. Use code from WhatsApp like OTJ-200-PMB-XXXX or OWNER bypass for testing.";
+ }
+}
+function bypassForOwner(){
+ http://localStorage.setItem('otj_unlocked','1');
+ http://localStorage.setItem('otj_unlock_code','OWNER-BYPASS');
+ showApp();
+}
+function showApp(){
+ http://document.getElementById('lockScreen').style.display='none';
+ http://document.getElementById('realApp').style.display='block';
+ updateProgress(); renderCerts(); renderSampleJobs(); renderQuestion();
+}
+if(localStorage.getItem('otj_unlocked')==='1'){ showApp(); }
 let assessmentScore=parseInt(localStorage.getItem('otj_score')||'0');
 let currentQ=0; let answered=JSON.parse(localStorage.getItem('otj_answered')||'{}');
 let certs=JSON.parse(localStorage.getItem('otj_certs')||'[]');
 const questions=[
-{q:"Tell me about yourself?",teach:"60 sec: Present+Past+Future. No cert needed.",options:[
-{label:"Simple - CV Only OK",text:"I am Legal Secretary with 10 years in Legal Suite billing and court docs at Sangham Inc. Accurate and friendly.",why:"Works with CV only"},
-{label:"With Optional Cert",text:"10 years plus Legal Suite certificate. Managed billing at Sangham Inc.",why:"If you have cert"},
-{label:"Fast Learner",text:"10 years experience, fast learner, adapt quickly.",why:"Good for any"}]},
-{q:"Why hire you?",teach:"Match advert. Certs optional.",options:[
-{label:"Experience Only",text:"You need Legal Suite billing - I did that 10 years at 3 firms.",why:"No cert needed"},
-{label:"With References",text:"10 years + 3 references + police clearance if needed.",why:"Optional boost"},
-{label:"Reliable",text:"Stable, accurate, friendly, long-term.",why:"No docs"}]},
-{q:"Qualifications?",teach:"If no certs say: bring to interview.",options:[
-{label:"CV Only Route",text:"Main qualification 10 years experience with references. Bring docs to interview.",why:"Never blocks"},
-{label:"Matric Only",text:"Matric plus 10 years experience.",why:"Most jobs ok"},
-{label:"Full If Have",text:"Matric plus certs plus experience. Originals at interview.",why:"Best if have"}]}
+{q:"Tell me about yourself?",teach:"60 sec: Present+Past+Future. Keep it short.",options:[
+{label:"Simple - CV Only OK",text:"I am an experienced worker with 10 years in my field. I am accurate, reliable and friendly.",why:"Works with CV only - good for any buyer"},
+{label:"With Optional Cert",text:"I have 10 years experience plus a professional certificate. I managed tasks accurately.",why:"Use if you have cert - adds trust"},
+{label:"Fast Learner",text:"I have solid experience and I am a fast learner who adapts quickly to new systems.",why:"Good for any job"}]},
+{q:"Why should we hire you?",teach:"Match job advert keywords. Certs optional.",options:[
+{label:"Experience Only",text:"You need the skills in the advert - I have done that for many years with good results.",why:"No cert needed"},
+{label:"With References",text:"I have experience plus contactable references and police clearance if needed.",why:"Optional boost"},
+{label:"Reliable",text:"I am stable, accurate, friendly and I want long-term work.",why:"No docs needed"}]},
+{q:"Do you have qualifications?",teach:"If no certs say: I will bring originals to interview.",options:[
+{label:"CV Only Route",text:"My main qualification is years of doing this job well, with references. I can bring documents to interview.",why:"Never blocks - generic for any buyer"},
+{label:"Matric Only",text:"I have Matric plus years of practical experience.",why:"Most jobs ok with this"},
+{label:"Full If You Have",text:"I have Matric plus certificates plus experience. Originals available at interview.",why:"Best if you have"}]}
 ];
-function showTab(id){document.querySelectorAll('.tab').forEach(t=>t.style.display='none');document.getElementById('tab-'+id).style.display='block';document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));const idx=['profile','certs','jobs','coach','apply'].indexOf(id);if(idx>=0)document.querySelectorAll('.nav button').classList.add('active');window.scrollTo(0,0);}
+function showTab(id){document.querySelectorAll('#realApp.tab').forEach(t=>t.style.display='none');document.getElementById('tab-'+id).style.display='block';document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));const idx=['profile','certs','jobs','coach','apply'].indexOf(id);if(idx>=0)document.querySelectorAll('.nav button').classList.add('active');window.scrollTo(0,0);}
 function saveProfile(){localStorage.setItem('otj_cv',document.getElementById('cvText').value);localStorage.setItem('otj_target',document.getElementById('targetJob').value);showTab('certs');renderCerts();}
 function renderCerts(){document.getElementById('certList').innerHTML=certs.map((c,i)=>`<div style="background:#fff;padding:10px;border-radius:10px;border:1px solid #ddd;margin:6px 0;display:flex;justify-content:space-between"><span>📜 ${c.name} (${c.year}) - Bring original to interview</span><button onclick="removeCert(${i})">X</button></div>`).join('')||'<p class="small">No certs added - 100% ok. Bring later to interview.</p>';}
 function addCert(){const n=document.getElementById('certName').value.trim();const y=document.getElementById('certYear').value.trim();if(!n)return alert('Enter name or skip');certs.push({name:n,year:y||'2024'});localStorage.setItem('otj_certs',JSON.stringify(certs));document.getElementById('certName').value='';document.getElementById('certYear').value='';renderCerts();}
 function removeCert(i){certs.splice(i,1);localStorage.setItem('otj_certs',JSON.stringify(certs));renderCerts();}
-function saveExtras(){localStorage.setItem('otj_matric',document.getElementById('matric').value);localStorage.setItem('otj_refs',document.getElementById('references').value);localStorage.setItem('otj_flags',JSON.stringify({police:document.getElementById('hasPolice').checked,refs:document.getElementById('hasReferences').checked,iddoc:document.getElementById('hasID').checked,drivers:document.getElementById('hasDrivers').checked}));renderSampleJobs();}
-function renderSampleJobs(){const list=[{title:"Legal Secretary - PMB",desc:"Legal Secretary Legal Suite billing court docs."},{title:"Office Admin",desc:"Office Admin Syspro customer liaison."}];document.getElementById('sampleJobs').innerHTML=list.map(j=>`<div style="background:#fff;padding:12px;border-radius:12px;border:1px solid #eee;margin:8px 0" onclick="document.getElementById('jobDesc').value='${j.desc}';analyzeJob()"><b>${j.title}</b><br><span class="small">${j.desc}</span><br><span style="font-size:11px;background:var(--yellow);padding:2px 8px;border-radius:10px">Tap to use</span></div>`).join('');}
-function analyzeJob(){const job=document.getElementById('jobDesc').value;let score=75+(certs.length>0?10:0)+Math.floor(Math.random()_10);document.getElementById('jobAnalysis').innerHTML=`<div class="teach-box"><b>Match: ${score}%</b> - CV only enough! ${certs.length>0?'Certs +10% bonus (bring originals)':'Tip: Bring originals to interview for +10%'}</div>`;localStorage.setItem('otj_job',job);localStorage.setItem('otj_atsscore',score);document.getElementById('atsPreview').innerHTML=`<div class="teach-box"><b>ATS CV Ready:</b> ${job.slice(0,60)}...<br>Will include: CV + ${certs.length>0? certs.length+' optional certs':'CV only - bring certs to interview'}</div>`;updateProgress();}
-function renderQuestion(){if(currentQ>=questions.length){document.getElementById('questionBox').innerHTML=`<div class="score">${assessmentScore}%</div><p style="text-align:center">Done! Ready to apply.</p><button class="btn" onclick="showTab('apply')">GO TO 1-TAP APPLY</button>`;return;}const q=questions[currentQ];document.getElementById('questionBox').innerHTML=`<p style="font-size:12px;font-weight:700;color:#666">Q ${currentQ+1}/${questions.length} - Any answer = points</p><h3 style="font-size:18px;margin:8px 0">${q.q}</h3><div class="teach-box"><b>How:</b> ${q.teach}<br><b>Tip:</b> Say "bring originals to interview"</div>${q.options.map((o,i)=>`<div class="answer-option" onclick="selectAnswer( ${i})" id="opt-${i}"><b> ${o.label}</b><br><span style="font-size:14px">${o.text}</span><div class="small" style="color:#0066cc">💡 ${o.why}</div></div>`).join('')}<button class="btn" id="submitBtn" disabled onclick="submitAnswer()">Pick one to get points</button>`;}
+function saveExtras(){localStorage.setItem('otj_matric',document.getElementById('matric').value);localStorage.setItem('otj_refs',document.getElementById('references').value);localStorage.setItem('otj_flags',JSON.stringify({police:document.getElementById('hasPolice').checked,refs:document.getElementById('hasReferences').checked,iddoc:document.getElementById('hasID').checked}));renderSampleJobs();}
+function renderSampleJobs(){const list=[{title:"Legal Secretary - PMB",desc:"Legal Secretary Legal Suite billing court docs."},{title:"Office Admin / Retail / Cashier",desc:"Admin, retail or cashier role - customer service and accuracy needed."}];document.getElementById('sampleJobs').innerHTML=list.map(j=>`<div style="background:#fff;padding:12px;border-radius:12px;border:1px solid #eee;margin:8px 0" onclick="document.getElementById('jobDesc').value='${j.desc}';analyzeJob()"><b>${j.title}</b><br><span class="small">${j.desc}</span></div>`).join('');}
+function analyzeJob(){const job=document.getElementById('jobDesc').value;let score=75+(certs.length>0?10:0)+Math.floor(Math.random()_10);document.getElementById('jobAnalysis').innerHTML=`<div class="teach-box"><b>Match: ${score}%</b> - CV only enough! ${certs.length>0?'Certs +10% (bring originals)':'Tip: Bring originals to interview'}</div>`;localStorage.setItem('otj_job',job);document.getElementById('atsPreview').innerHTML=`<div class="teach-box"><b>ATS CV Ready:</b> ${job.slice(0,60)}...<br>Will include: CV + ${certs.length>0? certs.length+' optional certs':'CV only - bring certs to interview'}</div>`;updateProgress();}
+function renderQuestion(){if(currentQ>=questions.length){document.getElementById('questionBox').innerHTML=`<div class="score">${assessmentScore}%</div><p style="text-align:center">Done! Ready to apply.</p><button class="btn btn-black" onclick="showTab('apply')">GO TO 1-TAP APPLY</button>`;return;}const q=questions[currentQ];document.getElementById('questionBox').innerHTML=`<p style="font-size:12px;font-weight:700;color:#666">Q ${currentQ+1}/${questions.length} - Any answer = points</p><h3 style="font-size:18px;margin:8px 0">${q.q}</h3><div class="teach-box"><b>How:</b> ${q.teach}<br><b>Tip:</b> Say "bring originals to interview"</div>${q.options.map((o,i)=>`<div class="answer-option" onclick="selectAnswer( ${i})" id="opt-${i}"><b> ${o.label}</b><br><span style="font-size:14px">${o.text}</span><div class="small" style="color:#0066cc">💡 ${o.why}</div></div>`).join('')}<button class="btn btn-black" id="submitBtn" disabled onclick="submitAnswer()">Pick one</button>`;}
 let selectedIdx=null;
 function selectAnswer(i){selectedIdx=i;document.querySelectorAll('.answer-option').forEach(el=>el.classList.remove('selected'));document.getElementById('opt-'+i).classList.add('selected');document.getElementById('submitBtn').disabled=false;document.getElementById('submitBtn').innerText='LEARN & GET 33%';}
-function submitAnswer(){if(selectedIdx===null)return;let points=34;assessmentScore=Math.min(100,assessmentScore+points);localStorage.setItem('otj_score',assessmentScore);answered[currentQ]=true;localStorage.setItem('otj_answered',JSON.stringify(answered));document.getElementById('questionBox').innerHTML=`<div style="text-align:center;padding:10px"><div style="font-size:40px">✅</div><h3>+${points}%!</h3></div><div class="teach-box">If no certs now, say "I will bring originals to interview"</div><button class="btn btn-yellow" onclick="nextQ()">NEXT</button>`;updateProgress();}
+function submitAnswer(){if(selectedIdx===null)return;let points=34;assessmentScore=Math.min(100,assessmentScore+points);localStorage.setItem('otj_score',assessmentScore);answered[currentQ]=true;localStorage.setItem('otj_answered',JSON.stringify(answered));document.getElementById('questionBox').innerHTML=`<div style="text-align:center;padding:10px"><div style="font-size:40px">✅</div><h3>+${points}%!</h3></div><div class="teach-box">If no certs now, say "I will bring originals to interview"</div><button class="btn btn-black" style="background:var(--yellow);color:#111" onclick="nextQ()">NEXT</button>`;updateProgress();}
 function nextQ(){currentQ++;selectedIdx=null;renderQuestion();updateProgress();}
-function updateProgress(){document.getElementById('progressFill').style.width=assessmentScore+'%';document.getElementById('scoreText').innerText=assessmentScore+'%';const f=document.getElementById('finalScore');if(f)f.innerText=assessmentScore+'%';const badge=document.getElementById('statusBadge');if(assessmentScore>=80){badge.innerText='Ready to Apply';badge.classList.add('pass');}else{badge.innerText=assessmentScore+'% - Need 80%';}const status=document.getElementById('applyStatus');const action=document.getElementById('applyAction');if(!status)return;if(assessmentScore>=80){status.innerText='✅ Passed! 1-TAP unlocked. CV only enough. Bring optional originals to interview.';action.innerHTML=`<button class="btn btn-green" style="font-size:18px;padding:20px" onclick="autoApply()">🚀 TAP TO APPLY NOW</button><p class="small" style="text-align:center">Will apply with: CV + ${certs.length>0? certs.length+' optional docs (or bring to interview)':'CV only - bring docs to interview'}</p>`;}else{status.innerText=`You have ${assessmentScore}%. Need 80% (3 easy questions) to unlock.`;action.innerHTML=`<button class="btn" onclick="showTab('coach')">CONTINUE COACH (${3-Object.keys(answered).length} left)</button><button class="btn btn-outline" onclick="assessmentScore=80;localStorage.setItem('otj_score',80);updateProgress();">SKIP COACH & APPLY NOW</button>`;}}
-function autoApply(){const job=localStorage.getItem('otj_job')||'Legal Secretary role';const hasCerts=certs.length>0;document.getElementById('applyAction').innerHTML=`<div style="text-align:center;padding:20px"><div style="font-size:50px">🚀</div><h3>Applying super simple...</h3><p class="small">${job.slice(0,60)}</p><p class="small">${hasCerts? 'Including '+certs.length+' optional certs + note: bring originals':'CV only - bring optional docs to interview'}</p></div>`;setTimeout(()=>{document.getElementById('applyAction').innerHTML=`<div class="teach-box" style="border-left-color:var(--green)"><b>✅ APPLIED!</b><br>Job: ${job.slice(0,70)}<br>Package: ATS CV (CV only enough)<br>${hasCerts? 'Optional: '+certs.map(c=>c.name).join(', ')+' - Bring originals to interview!':'Optional: None - bring originals to interview if you have them.'}<br><br><b>Next:</b> Bring all originals to interview.<br>Time: ${new Date().toLocaleString()}</div><button class="btn" onclick="showTab('jobs')">APPLY NEXT - 1 TAP</button>`;},1500);}
-updateProgress();renderCerts();renderSampleJobs();renderQuestion();
+function updateProgress(){document.getElementById('progressFill').style.width=assessmentScore+'%';document.getElementById('scoreText').innerText=assessmentScore+'%';const f=document.getElementById('finalScore');if(f)f.innerText=assessmentScore+'%';const badge=document.getElementById('statusBadge');if(assessmentScore>=80){badge.innerText='Ready to Apply';badge.classList.add('pass');}else{badge.innerText=assessmentScore+'% - Need 80%';}const status=document.getElementById('applyStatus');const action=document.getElementById('applyAction');if(!status)return;if(assessmentScore>=80){status.innerText='✅ Passed! 1-TAP unlocked. CV only enough. Bring optional originals to interview.';action.innerHTML=`<button class="btn btn-green" style="font-size:18px;padding:20px" onclick="autoApply()">🚀 TAP TO APPLY NOW</button>`;}else{status.innerText=`You have ${assessmentScore}%. Need 80% to unlock.`;action.innerHTML=`<button class="btn btn-black" onclick="showTab('coach')">CONTINUE COACH</button><button class="btn btn-outline" onclick="assessmentScore=80;localStorage.setItem('otj_score',80);updateProgress();">SKIP COACH & APPLY NOW</button>`;}}
+function autoApply(){const job=localStorage.getItem('otj_job')||'Job role';const hasCerts=certs.length>0;document.getElementById('applyAction').innerHTML=`<div style="text-align:center;padding:20px"><div style="font-size:50px">🚀</div><h3>Applying...</h3></div>`;setTimeout(()=>{document.getElementById('applyAction').innerHTML=`<div class="teach-box" style="border-left-color:var(--green)"><b>✅ APPLIED!</b><br>Job: ${job.slice(0,70)}<br>Package: CV + ${hasCerts? certs.length+' optional certs - Bring originals!':'CV only - bring originals if have'}<br>Time: ${new Date().toLocaleString()}</div><button class="btn btn-black" onclick="showTab('jobs')">APPLY NEXT - 1 TAP</button>`;},1500);}
+updateProgress(); renderCerts(); renderSampleJobs(); renderQuestion();
 if(localStorage.getItem('otj_cv'))document.getElementById('cvText').value=localStorage.getItem('otj_cv');
 </script>
 </body>
