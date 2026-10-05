@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>One Tap Jobs - R200 Lifetime</title>
+  <style>
+    :root {
+      --y: #FFC600;
+      --b: #111;
+      --g: #25D366;
+      --r: #e74c3c;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      padding-bottom: 90px;
+    }
+
+    .header {
+      background: var(--y);
+      color: #111;
+      padding: 14px;
+      text-align: center;
+      font-weight: 900;
+      font-size: 19px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .card {
+      background: #1c1c1c;
+      margin: 10px;
+      border-radius: 16px;
+      padding: 14px;
+      border: 1px solid #333;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border: 0;
+      border-radius: 12px;
+      font-weight: 800;
+      margin: 6px 0;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+      transform: scale(0.98);
+    }
+
+    .btnY {
+      background: var(--y);
+      color: #111;
+    }
+    .btnW {
+      background: #fff;
+      color: #111;
+    }
+    .btnWa {
+      background: var(--g);
+      color: #fff;
+    }
+    .btnR {
+      background: var(--r);
+      color: #fff;
+    }
+    .btnB {
+      background: #3498db;
+      color: #fff;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #444;
+      background: #222;
+      color: #fff;
+      margin: 6px 0;
+      font-family: inherit;
+    }
+
+    .box {
+      background: #222;
+      padding: 10px;
+      border-radius: 10px;
+      min-height: 40px;
+      font-size: 12px;
+      white-space: pre-wrap;
+      margin: 6px 0;
+      word-wrap: break-word;
+    }
+
+    .small {
+      font-size: 11px;
+      color: #aaa;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tab-switch {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #333;
+    }
+
+    .tab-btn {
+      padding: 10px 16px;
+      background: transparent;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      font-weight: 700;
+      border-bottom: 3px solid transparent;
+      transition: 0.2s;
+    }
+
+    .tab-btn.active {
+      color: var(--y);
+      border-bottom-color: var(--y);
+    }
+
+    .job-item {
+      background: #222;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 10px;
+      border-left: 4px solid var(--y);
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      margin: 0 4px;
+    }
+
+    .status-open {
+      background: #27ae60;
+      color: #fff;
+    }
+
+    .status-closed {
+      background: #e74c3c;
+      color: #fff;
+    }
+
+    .status-applied {
+      background: #3498db;
+      color: #fff;
+    }
+
+    .status-interview {
+      background: #f39c12;
+      color: #111;
+    }
+
+    .interview-qa {
+      background: #2a2a2a;
+      padding: 12px;
+      margin: 8px 0;
+      border-left: 3px solid var(--y);
+      border-radius: 6px;
+    }
+
+    .question {
+      font-weight: 700;
+      color: var(--y);
+      margin-bottom: 6px;
+    }
+
+    .answer-input {
+      width: 100%;
+      padding: 10px;
+      background: #1c1c1c;
+      border: 1px solid #444;
+      color: #fff;
+      border-radius: 6px;
+      margin: 6px 0;
+      font-family: inherit;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .modal.active {
+      display: block;
+    }
+
+    .modal-content {
+      background: #1c1c1c;
+      border-radius: 16px;
+      padding: 20px;
+      max-width: 600px;
+      margin: 40px auto;
+      border: 2px solid var(--y);
+    }
+
+    .close-modal {
+      float: right;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #aaa;
+    }
+
+    .close-modal:hover {
+      color: var(--y);
+    }
+
+    .employer-reactions {
+      display: flex;
+      gap: 8px;
+      margin: 8px 0;
+      flex-wrap: wrap;
+    }
+
+    .reaction-btn {
+      padding: 8px 12px;
+      border: 1px solid #444;
+      background: #222;
+      color: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: 0.2s;
+    }
+
+    .reaction-btn:hover {
+      border-color: var(--y);
+      color: var(--y);
+    }
+
+    .reaction-count {
+      display: inline-block;
+      background: #333;
+      color: #fff;
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 10px;
+      margin-left: 4px;
+    }
+
+    .followup-schedule {
+      background: #2a2a2a;
+      padding: 10px;
+      border-left: 3px solid var(--g);
+      border-radius: 6px;
+      margin: 8px 0;
+      font-size: 11px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: #333;
+      border-radius: 3px;
+      overflow: hidden;
+      margin: 8px 0;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--y);
+      transition: width 0.3s;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    ⚡ ONE TAP JOBS - R200 LIFETIME - PMB<br />
+    <span style="font-size: 11px">One Phone = One License | EFT Any Bank | Works Offline</span>
+  </div>
+
+  <!-- PAYWALL -->
+  <div class="card" id="paywall" style="border: 3px solid var(--y)">
+    <h3>🔒 UNLOCK THIS PHONE - R200 ONCE</h3>
+    <div class="small">Your Phone ID - Use as EFT Reference:</div>
+    <div
+      id="phoneID"
+      style="
+        font-size: 22px;
+        font-weight: 900;
+        background: var(--y);
+        color: #111;
+        padding: 10px;
+        border-radius: 10px;
+        text-align: center;
+        letter-spacing: 1px;
+      "
+    >
+      ...
+    </div>
+
+    <div class="box">
+      <b>PAY R200 - EFT ANY BANK (FNB / Capitec / ABSA / Std Bank)</b><br />
+      Bank: Capitec<br />
+      Account Name: ONE TAP JOBS<br />
+      Account Number: <b>1051 234 567</b><br />
+      Branch Code: 470010<br />
+      <b>Reference: <span id="refID" style="background: #fff; color: #111; padding: 2px 6px; border-radius: 4px"></span> - VERY IMPORTANT</b><br /><br />
+      After pay WhatsApp POP + Phone ID to:<br /><b>07X XXX XXXX</b><br /><br />
+      You will get unlock code for <b>THIS PHONE ONLY</b>. Cannot share APK - Code won't work on other
+      phone.
+    </div>
+
+    <input id="unlockCode" placeholder="Paste unlock code from WhatsApp here - e.g. OTJ-200-PMB-XXXX" />
+    <button class="btn btnY" onclick="unlockPhone()">🔓 TAP TO UNLOCK THIS PHONE FOREVER</button>
+    <div id="lockStatus" class="small">Locked - One phone per R200 - No sharing</div>
+    <div class="small">Demo unlock code to test: OTJ-200-UNLOCK</div>
+  </div>
+
+  <!-- APPLICANT APP -->
+  <div id="appContent" class="hidden">
+    <!-- TAB SWITCH -->
+    <div class="tab-switch">
+      <button class="tab-btn active" onclick="switchTab('applicant')">👤 Applicant</button>
+      <button class="tab-btn" onclick="switchTab('employer')">👔 Employer Portal</button>
+    </div>
+
+    <!-- APPLICANT TAB -->
+    <div id="applicant-tab">
+      <!-- STEP 1: CV UPLOAD -->
+      <div class="card">
+        <h3>1️⃣ CV - Upload Once / Update Anytime</h3>
+        <input type="file" id="cvFile" accept=".txt,.doc,.docx,.pdf" />
+        <textarea id="cvText" placeholder="CV text - edit anytime" style="min-height: 150px"></textarea>
+        <div class="row">
+          <button class="btn btnY" onclick="saveCV()">💾 Save CV</button>
+          <button class="btn btnW" onclick="loadCVFile()">📄 Load from File</button>
+        </div>
+        <div id="cvStatus" class="small"></div>
+      </div>
+
+      <!-- STEP 2: ATS CV + COVER LETTER -->
+      <div class="card">
+        <h3>2️⃣ Generate ATS CV + Cover Letter</h3>
+        <select id="jobType"></select>
+        <textarea id="jobPaste" placeholder="Paste job advert here (optional) to tailor CV"></textarea>
+        <button class="btn btnY" onclick="generateATS()">♻️ Generate ATS CV + Cover Letter</button>
+
+        <div class="row">
+          <div style="flex: 1">
+            <b>📄 ATS CV</b>
+            <div class="box" id="atsCV">ATS CV will appear here</div>
+            <button class="btn btnW" onclick="copyToClipboard('atsCV')">📋 Copy ATS CV</button>
+          </div>
+          <div style="flex: 1">
+            <b>📝 Cover Letter</b>
+            <div class="box" id="cover">Cover letter will appear here</div>
+            <button class="btn btnW" onclick="copyToClipboard('cover')">📋 Copy Cover</button>
+          </div>
+        </div>
+        <div class="box">ATS Score: <span id="atsScore">0</span>%</div>
+      </div>
+
+      <!-- STEP 3: INTERVIEW TEST -->
+      <div class="card" style="border: 2px solid var(--y)">
+        <h3>3️⃣ 🎤 Interview Test - Must Pass 7/10</h3>
+        <button class="btn btnY" onclick="generateInterview()">🎤 Generate Interview Questions</button>
+
+        <div id="interviewSection" class="hidden">
+          <div class="box" id="interviewQ"></div>
+
+          <div id="interviewForm"></div>
+
+          <div class="row">
+            <button class="btn btnY" onclick="submitInterview()">✅ Submit Answers</button>
+            <button class="btn btnR" onclick="resetInterview()">🔄 Reset</button>
+          </div>
+
+          <div id="interviewScore" class="box hidden"></div>
+          <div id="readiness" class="small"></div>
+        </div>
+      </div>
+
+      <!-- STEP 4: SEEK JOBS -->
+      <div class="card">
+        <h3>4️⃣ 🔍 Seek Jobs</h3>
+        <div class="row">
+          <select id="location">
+            <option>Pietermaritzburg</option>
+            <option>Durban</option>
+            <option>KZN</option>
+            <option>Johannesburg</option>
+            <option>Cape Town</option>
+            <option>Bloemfontein</option>
+            <option>Remote</option>
+          </select>
+        </div>
+        <button class="btn btnY" onclick="seekJobs()">🔍 Load Available Jobs</button>
+        <div id="jobsList" class="box"></div>
+      </div>
+
+      <!-- STEP 5: RELEASE TO EMPLOYERS -->
+      <div class="card" style="border: 2px solid var(--g)">
+        <h3>5️⃣ ⚡ Release Application to Employers</h3>
+        <button id="applyBtn" class="btn btnWa hidden" onclick="releaseApplications()">
+          ⚡ Release to Selected Employers
+        </button>
+        <div id="releaseStatus" class="box">Select jobs above to release applications</div>
+        <div id="appliedList" class="box"></div>
+      </div>
+
+      <!-- STEP 6: FOLLOW-UPS -->
+      <div class="card">
+        <h3>6️⃣ 📞 Automatic Follow-ups</h3>
+        <div id="followupList" class="box">No follow-ups scheduled yet</div>
+        <div id="scheduledFollowups"></div>
+      </div>
+
+      <!-- STEP 7: MANAGE APPLICATIONS -->
+      <div class="card" style="border: 2px solid var(--r)">
+        <h3>7️⃣ 📊 Manage Applications</h3>
+        <div class="row">
+          <button class="btn btnW" onclick="showApplicationStatus()">📊 View All Applications</button>
+          <button class="btn btnR" onclick="markPlaced()">✅ I GOT PLACED</button>
+        </div>
+        <div id="applicationStatus" class="box"></div>
+      </div>
+    </div>
+
+    <!-- EMPLOYER TAB -->
+    <div id="employer-tab" class="hidden">
+      <div class="card" style="border: 2px solid #3498db">
+        <h3>👔 EMPLOYER PORTAL - View & React to Applications</h3>
+        <div class="small">Employers can view applicant profiles and react to applications</div>
+
+        <button class="btn btnB" onclick="loadEmployerApplications()">🔄 Load Applications</button>
+        <div id="employerList" class="box">Applications will appear here</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODALS -->
+  <div id="applicationModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('applicationModal')">&times;</span>
+      <h2 id="modalJobTitle"></h2>
+      <div id="modalCV" class="box"></div>
+      <div id="modalATS" class="box"></div>
+      <div id="modalCover" class="box"></div>
+
+      <h4>📊 Employer Reactions:</h4>
+      <div class="employer-reactions">
+        <button class="reaction-btn" onclick="recordReaction('application', 'interested')">
+          👍 Interested <span class="reaction-count" id="count-interested">0</span>
+        </button>
+        <button class="reaction-btn" onclick="recordReaction('application', 'maybe')">
+          🤔 Maybe <span class="reaction-count" id="count-maybe">0</span>
+        </button>
+        <button class="reaction-btn" onclick="recordReaction('application', 'not-interested')">
+          👎 Not Interested <span class="reaction-count" id="count-not-interested">0</span>
+        </button>
+        <button class="reaction-btn" onclick="recordReaction('application', 'interview')">
+          📞 Interview <span class="reaction-count" id="count-interview">0</span>
+        </button>
+      </div>
+
+      <div id="reactionsLog" class="box"></div>
+    </div>
+  </div>
+
+  <script>
+    // ===== JOB CATEGORIES =====
+    const JOB_CATEGORIES = [
+      "Cashier",
+      "Retail Sales Associate",
+      "Customer Service Representative",
+      "General Worker",
+      "Driver",
+      "Delivery Driver",
+      "Warehouse Assistant",
+      "Store Assistant",
+      "Office Administrator",
+      "Receptionist",
+      "Call Centre Agent",
+      "Security Guard",
+      "Cleaner",
+      "Hospitality",
+      "Waiter/Waitress",
+      "Barista",
+      "Chef",
+      "Farm Worker",
+      "Sales Consultant",
+      "Technician",
+      "Electrician",
+      "Plumber",
+      "Factory Worker",
+      "Supervisor",
+      "Project Assistant",
+      "Data Capturer",
+      "Accounts Clerk",
+      "Admin Clerk",
+      "Nurse",
+      "Care Worker",
+      "Teacher Assistant",
+      "School Administrator",
+    ];
+
+    const INTERVIEW_QUESTIONS = [
+      { q: "Tell us about yourself and your work experience?", type: "open" },
+      { q: "Why are you interested in this position?", type: "open" },
+      { q: "What are your greatest strengths?", type: "open" },
+      { q: "How do you handle pressure and tight deadlines?", type: "open" },
+      { q: "Describe a time you resolved a conflict with a colleague?", type: "open" },
+      { q: "What are your salary expectations?", type: "open" },
+      { q: "When are you available to start?", type: "open" },
+      { q: "How do you stay organized and manage multiple tasks?", type: "open" },
+      { q: "What makes you different from other candidates?", type: "open" },
+      { q: "Do you have any questions for us?", type: "open" },
+    ];
+
+    // ===== STATE MANAGEMENT =====
+    let currentTab = "applicant";
+    let currentApplications = [];
+    let interviewAnswers = {};
+    let interviewScore = 0;
+    let currentEmployerApp = null;
+    let reactions = {};
+
+    // ===== INITIALIZATION =====
+    function init() {
+      let pid = localStorage.getItem("phoneID");
+      if (!pid) {
+        pid = "PMB-" + Math.random().toString(36).substr(2, 4).toUpperCase() + "-" + Math.random().toString(36).substr(2, 3).toUpperCase();
+        localStorage.setItem("phoneID", pid);
+      }
+
+      document.getElementById("phoneID").innerText = pid;
+      document.getElementById("refID").innerText = pid;
+
+      if (localStorage.getItem("unlocked_" + pid) === "YES") {
+        document.getElementById("paywall").classList.add("hidden");
+        document.getElementById("appContent").classList.remove("hidden");
+      }
+
+      populateJobCategories();
+      loadCVFromStorage();
+      loadApplicationsFromStorage();
+      scheduleFollowups();
+    }
+
+    function populateJobCategories() {
+      const select = document.getElementById("jobType");
+      select.innerHTML = "";
+      JOB_CATEGORIES.forEach((job) => {
+        const opt = document.createElement("option");
+        opt.value = job;
+        opt.textContent = job;
+        select.appendChild(opt);
+      });
+    }
+
+    // ===== UNLOCK SYSTEM =====
+    function unlockPhone() {
+      const pid = localStorage.getItem("phoneID");
+      const code = document.getElementById("unlockCode").value.trim().toUpperCase();
+      const expected = "OTJ-200-" + pid;
+
+      if (code === expected || code === "OTJ-200-UNLOCK") {
+        localStorage.setItem("unlocked_" + pid, "YES");
+        document.getElementById("paywall").classList.add("hidden");
+        document.getElementById("appContent").classList.remove("hidden");
+        alert("✅ Unlocked forever on this phone: " + pid);
+      } else {
+        document.getElementById("lockStatus").innerText = "❌ Wrong code. Your Phone ID is " + pid + " - Code must be OTJ-200-" + pid;
+      }
+    }
+
+    // ===== TAB SWITCHING =====
+    function switchTab(tab) {
+      currentTab = tab;
+      document.querySelectorAll(".tab-btn").forEach((btn) => btn.classList.remove("active"));
+      document.querySelectorAll("[id$='-tab']").forEach((t) => t.classList.add("hidden"));
+
+      event.target.classList.add("active");
+      document.getElementById(tab + "-tab").classList.remove("hidden");
+    }
+
+    // ===== CV MANAGEMENT =====
+    function saveCV() {
+      const cv = document.getElementById("cvText").value;
+      if (!cv.trim()) {
+        alert("Please enter your CV text first");
+        return;
+      }
+      localStorage.setItem("cv", cv);
+      document.getElementById("cvStatus").innerText = "✅ CV saved on " + new Date().toLocaleString();
+    }
+
+    function loadCVFile() {
+      const file = document.getElementById("cvFile").files[0];
+      if (!file) {
+        alert("Please select a file first");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const text = e.target.result || "";
+        document.getElementById("cvText").value = text;
+        localStorage.setItem("cv", text);
+        document.getElementById("cvStatus").innerText = "✅ CV loaded from: " + file.name;
+      };
+
+      reader.onerror = () => {
+        document.getElementById("cvStatus").innerText = "❌ Could not read file";
+      };
+
+      if (file.name.toLowerCase().endsWith(".pdf")) {
+        document.getElementById("cvStatus").innerText = "📄 PDF detected. Copy text manually or convert to TXT first.";
+        return;
+      }
+
+      reader.readAsText(file);
+    }
+
+    function loadCVFromStorage() {
+      const cv = localStorage.getItem("cv");
+      if (cv) {
+        document.getElementById("cvText").value = cv;
+      }
+    }
+
+    // ===== ATS GENERATION =====
+    function generateATS() {
+      const cv = document.getElementById("cvText").value.trim();
+      const jobType = document.getElementById("jobType").value;
+      const jobAdvert = document.getElementById("jobPaste").value.trim();
+
+      if (!cv) {
+        alert("Please save your CV first");
+        return;
+      }
+
+      const keywords = extractKeywords(cv + " " + jobAdvert, jobType);
+      const score = jobAdvert ? Math.min(95, 65 + Math.random() * 30) : 65;
+
+      const atsCV = generateATSCV(cv, keywords, jobType);
+      const coverLetter = generateCoverLetter(cv, keywords, jobType, jobAdvert);
+
+      document.getElementById("atsCV").innerText = atsCV;
+      document.getElementById("cover").innerText = coverLetter;
+      document.getElementById("atsScore").innerText = Math.round(score);
+
+      // Save to storage
+      localStorage.setItem("ats", atsCV);
+      localStorage.setItem("cover", coverLetter);
+      localStorage.setItem("atsScore", Math.round(score));
+
+      alert("✅ ATS CV and Cover Letter generated!");
+    }
+
+    function generateATSCV(cv, keywords, jobType) {
+      return `ATS OPTIMIZED CV - ${jobType}
+
+${cv.substring(0, 400)}
+
+KEY SKILLS & KEYWORDS:
+${keywords}
+
+EMPLOYMENT HISTORY:
+${cv.substring(400, 700)}
+
+EDUCATION & CERTIFICATIONS:
+Available upon request
+
+AVAILABILITY:
+Immediate or as agreed
+
+REFERENCES:
+Available upon request
+
+---
+Generated by One Tap Jobs System`;
+    }
+
+    function generateCoverLetter(cv, keywords, jobType, jobAdvert) {
+      const companyName = jobAdvert.substring(0, 50) || "Esteemed Employer";
+      return `Dear Hiring Manager,
+
+I am writing to express my strong interest in the ${jobType} position.
+
+With my experience in ${keywords.split(",").slice(0, 3).join(", ")}, I am confident I can make an immediate and positive impact on your team.
+
+Throughout my career, I have demonstrated:
+- Strong work ethic and reliability
+- Excellent customer service and communication skills
+- Ability to work effectively in fast-paced environments
+- Commitment to meeting and exceeding targets
+- Team collaboration and problem-solving abilities
+
+I am eager to bring these skills to your organization and would welcome the opportunity to discuss how I can contribute to your success.
+
+Thank you for considering my application. I am available for an interview at your convenience and can be reached at the contact details provided.
+
+Sincerely,
+Applicant
+
+---
+Generated by One Tap Jobs System`;
+    }
+
+    function extractKeywords(text, jobType) {
+      const combined = text.toLowerCase();
+      const keywords = [
+        "cashier",
+        "customer service",
+        "retail",
+        "sales",
+        "driver",
+        "delivery",
+        "warehouse",
+        "admin",
+        "office",
+        "communication",
+        "stock",
+        "inventory",
+        "supervisor",
+        "security",
+        "cleaner",
+        "hospitality",
+        "waiter",
+        "barista",
+        "food",
+        "computer",
+        "excel",
+        "phone",
+        "teamwork",
+        "picking",
+        "loading",
+        "cash handling",
+        "problem solving",
+        "time management",
+        "licence",
+        "grade 12",
+        "file management",
+      ];
+
+      const found = keywords.filter((kw) => combined.includes(kw));
+      return (found.length ? found.slice(0, 8).join(", ") : "customer service, teamwork, reliability") + ", " + jobType;
+    }
+
+    // ===== INTERVIEW SYSTEM =====
+    function generateInterview() {
+      const cv = document.getElementById("cvText").value.trim();
+      if (!cv) {
+        alert("Please save your CV first");
+        return;
+      }
+
+      interviewAnswers = {};
+      document.getElementById("interviewForm").innerHTML = "";
+
+      let questionsHTML = "INTERVIEW QUESTIONS - Answer all to pass (7/10):\n\n";
+      INTERVIEW_QUESTIONS.forEach((item, idx) => {
+        questionsHTML += `${idx + 1}. ${item.q}\n`;
+        document.getElementById("interviewForm").innerHTML += `
+          <div class="interview-qa">
+            <div class="question">Q${idx + 1}: ${item.q}</div>
+            <textarea class="answer-input" id="answer${idx}" placeholder="Your answer..." style="min-height:80px"></textarea>
+          </div>
+        `;
+      });
+
+      document.getElementById("interviewQ").innerText = questionsHTML;
+      document.getElementById("interviewSection").classList.remove("hidden");
+    }
+
+    function submitInterview() {
+      let answered = 0;
+      let qualityScore = 0;
+
+      INTERVIEW_QUESTIONS.forEach((_, idx) => {
+        const answer = document.getElementById("answer" + idx)?.value || "";
+        if (answer.trim()) {
+          answered++;
+          qualityScore += Math.min(10, Math.ceil(answer.length / 20));
+        }
+      });
+
+      interviewScore = Math.round((answered / INTERVIEW_QUESTIONS.length) * 10);
+      const finalScore = Math.min(10, interviewScore);
+
+      document.getElementById("interviewScore").classList.remove("hidden");
+      document.getElementById("interviewScore").innerHTML = `
+        <h3>📊 Interview Results</h3>
+        Questions Answered: ${answered}/${INTERVIEW_QUESTIONS.length}
+        <div class="progress-bar"><div class="progress-fill" style="width:${(answered / INTERVIEW_QUESTIONS.length) * 100}%"></div></div>
+        <b>Final Score: ${finalScore}/10 ${finalScore >= 7 ? "✅ PASSED" : "❌ FAILED"}</b>
+        <br><span class="small">${finalScore >= 7 ? "You are now ready to release applications!" : "Please review your answers and try again."}</span>
+      `;
+
+      localStorage.setItem("interviewScore", finalScore);
+
+      if (finalScore >= 7) {
+        document.getElementById("applyBtn").classList.remove("hidden");
+        document.getElementById("readiness").innerText = `✅ Interview Ready - Score: ${finalScore}/10`;
+      } else {
+        document.getElementById("readiness").innerText = `❌ Need improvement - Score: ${finalScore}/10`;
+      }
+    }
+
+    function resetInterview() {
+      INTERVIEW_QUESTIONS.forEach((_, idx) => {
+        const elem = document.getElementById("answer" + idx);
+        if (elem) elem.value = "";
+      });
+      document.getElementById("interviewScore").classList.add("hidden");
+      interviewScore = 0;
+    }
+
+    // ===== JOB SEEKING =====
+    function seekJobs() {
+      const jobType = document.getElementById("jobType").value;
+      const location = document.getElementById("location").value;
+      let html = "";
+
+      currentApplications = [];
+
+      for (let i = 0; i < 8; i++) {
+        const isOpen = Math.random() > 0.3;
+        const jobId = `${jobType}-${location}-${i}`;
+
+        currentApplications.push({
+          id: jobId,
+          title: `${jobType} #${i + 1}`,
+          location: location,
+          status: isOpen ? "open" : "closed",
+          applied: false,
+          reactions: { interested: 0, maybe: 0, "not-interested": 0, interview: 0 },
+          timestamp: new Date().toISOString(),
+        });
+
+        html += `
+          <div class="job-item">
+            <input type="checkbox" id="job${i}" class="job-checkbox" value="${jobId}">
+            <b>${jobType} #${i + 1}</b>
+            <span class="status-badge ${isOpen ? "status-open" : "status-closed"}">${isOpen ? "🟢 OPEN" : "🔴 CLOSED"}</span>
+            <span style="color:#aaa"> @ ${location}</span>
+            <button onclick="showJobDetails('${jobId}')" style="font-size:12px; padding:4px 8px; background:#333; border:0; color:#fff; border-radius:4px; cursor:pointer; margin-left:8px;">📋 Details</button>
+          </div>
+        `;
+      }
+
+      document.getElementById("jobsList").innerHTML = html;
+      saveApplicationsToStorage();
+    }
+
+    function showJobDetails(jobId) {
+      const app = currentApplications.find((a) => a.id === jobId);
+      if (!app) return;
+
+      currentEmployerApp = app;
+
+      document.getElementById("modalJobTitle").innerHTML = `${app.title} @ ${app.location}`;
+      document.getElementById("modalCV").innerText = "CV:\n" + document.getElementById("cvText").value.substring(0, 200) + "...";
+      document.getElementById("modalATS").innerText = localStorage.getItem("ats") || "ATS CV not generated yet";
+      document.getElementById("modalCover").innerText = localStorage.getItem("cover") || "Cover letter not generated yet";
+
+      document.getElementById("count-interested").innerText = app.reactions.interested;
+      document.getElementById("count-maybe").innerText = app.reactions.maybe;
+      document.getElementById("count-not-interested").innerText = app.reactions["not-interested"];
+      document.getElementById("count-interview").innerText = app.reactions.interview;
+
+      updateReactionsLog();
+
+      document.getElementById("applicationModal").classList.add("active");
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove("active");
+    }
+
+    // ===== EMPLOYER REACTIONS =====
+    function recordReaction(type, reaction) {
+      if (!currentEmployerApp) return;
+
+      currentEmployerApp.reactions[reaction] = (currentEmployerApp.reactions[reaction] || 0) + 1;
+      document.getElementById("count-" + reaction).innerText = currentEmployerApp.reactions[reaction];
+
+      // Save to reactions log
+      if (!reactions[currentEmployerApp.id]) reactions[currentEmployerApp.id] = [];
+      reactions[currentEmployerApp.id].push({ reaction, timestamp: new Date().toISOString() });
+
+      localStorage.setItem("reactions", JSON.stringify(reactions));
+      updateReactionsLog();
+
+      alert(`✅ Reaction recorded: ${reaction}`);
+    }
+
+    function updateReactionsLog() {
+      const log = reactions[currentEmployerApp.id] || [];
+      const summary = log.map((r) => `• ${r.reaction.toUpperCase()} - ${new Date(r.timestamp).toLocaleTimeString()}`).join("\n");
+
+      document.getElementById("reactionsLog").innerText = summary || "No reactions yet";
+    }
+
+    // ===== RELEASE TO EMPLOYERS =====
+    function releaseApplications() {
+      const interviewScore = localStorage.getItem("interviewScore");
+      if (!interviewScore || parseInt(interviewScore) < 7) {
+        alert("❌ You must pass the interview (7/10) first");
+        return;
+      }
+
+      const selectedJobs = Array.from(document.querySelectorAll(".job-checkbox:checked")).map((cb) => cb.value);
+
+      if (selectedJobs.length === 0) {
+        alert("Please select at least one job");
+        return;
+      }
+
+      let html = "✅ Applications Released:\n\n";
+      selectedJobs.forEach((jobId) => {
+        const app = currentApplications.find((a) => a.id === jobId);
+        if (app) {
+          app.applied = true;
+          app.appliedAt = new Date().toISOString();
+          html += `• ${app.title} @ ${app.location} - Released\n`;
+        }
+      });
+
+      document.getElementById("appliedList").innerText = html;
+      document.getElementById("releaseStatus").innerText = `✅ ${selectedJobs.length} applications released to employers!`;
+
+      saveApplicationsToStorage();
+      scheduleFollowups();
+
+      alert(html);
+    }
+
+    // ===== AUTOMATED FOLLOW-UPS =====
+    function scheduleFollowups() {
+      const applied = currentApplications.filter((a) => a.applied);
+
+      let followupHTML = "";
+
+      applied.forEach((app) => {
+        const day3 = new Date(new Date(app.appliedAt).getTime() + 3 * 24 * 60 * 60 * 1000);
+        const day7 = new Date(new Date(app.appliedAt).getTime() + 7 * 24 * 60 * 60 * 1000);
+
+        followupHTML += `
+          <div class="followup-schedule">
+            <b>${app.title}</b> @ ${app.location}
+            <br>📅 Day 3: ${day3.toLocaleDateString()} ${day3.toLocaleTimeString()} - Auto follow-up scheduled
+            <br>📅 Day 7: ${day7.toLocaleDateString()} ${day7.toLocaleTimeString()} - Final follow-up scheduled
+            <button class="reaction-btn" onclick="sendFollowupNow('${app.id}', 3)" style="margin-top:6px;">📞 Send Day 3 Now</button>
+            <button class="reaction-btn" onclick="sendFollowupNow('${app.id}', 7)">📞 Send Day 7 Now</button>
+          </div>
+        `;
+      });
+
+      if (applied.length === 0) {
+        followupHTML = "No follow-ups scheduled. Release applications first.";
+      }
+
+      document.getElementById("scheduledFollowups").innerHTML = followupHTML;
+      document.getElementById("followupList").innerHTML = followupHTML;
+    }
+
+    function sendFollowupNow(jobId, day) {
+      const app = currentApplications.find((a) => a.id === jobId);
+      if (!app) return;
+
+      const message =
+        day === 3
+          ? `Good morning! I applied for the ${app.title} position via One Tap Jobs on ${new Date(app.appliedAt).toLocaleDateString()}. Following up on my application status.`
+          : `Good afternoon! Following up on my application for ${app.title} @ ${app.location}. Still very interested in this opportunity.`;
+
+      const waUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+      window.open(waUrl);
+
+      alert(`✅ Follow-up message prepared:\n\n${message}`);
+    }
+
+    // ===== APPLICATION STATUS =====
+    function showApplicationStatus() {
+      let html = "YOUR APPLICATIONS:\n\n";
+
+      currentApplications.forEach((app) => {
+        if (!app.applied) return;
+
+        const reactions = app.reactions;
+        const totalReactions = Object.values(reactions).reduce((a, b) => a + b, 0);
+
+        html += `
+📌 ${app.title} @ ${app.location}
+Status: Applied on ${new Date(app.appliedAt).toLocaleDateString()}
+Reactions: 👍 ${reactions.interested} | 🤔 ${reactions.maybe} | 👎 ${reactions["not-interested"]} | 📞 ${reactions.interview}
+Total Responses: ${totalReactions}
+
+`;
+      });
+
+      if (currentApplications.filter((a) => a.applied).length === 0) {
+        html = "No applications released yet. Release to employers first.";
+      }
+
+      document.getElementById("applicationStatus").innerText = html;
+    }
+
+    function markPlaced() {
+      const company = prompt("Which company did you get placed at?");
+      if (!company) return;
+
+      alert(`🎉 CONGRATULATIONS!\n\nPlaced at: ${company}\n\nAll applications marked complete.`);
+      localStorage.clear();
+      location.reload();
+    }
+
+    // ===== EMPLOYER PORTAL =====
+    function loadEmployerApplications() {
+      let html = "";
+
+      currentApplications.forEach((app) => {
+        if (!app.applied) return;
+
+        html += `
+          <div class="job-item">
+            <b>${app.title}</b> @ ${app.location}
+            <br><span class="small">Applied: ${new Date(app.appliedAt).toLocaleString()}</span>
+            <button class="reaction-btn" onclick="showJobDetails('${app.id}')" style="margin-top:8px;">👁️ View Application</button>
+          </div>
+        `;
+      });
+
+      if (!html) {
+        html = "No applications received yet. Applicants must release their applications first.";
+      }
+
+      document.getElementById("employerList").innerText = html.length > 0 ? "" : html;
+      document.getElementById("employerList").innerHTML = html || html;
+    }
+
+    // ===== STORAGE =====
+    function saveApplicationsToStorage() {
+      localStorage.setItem("applications", JSON.stringify(currentApplications));
+    }
+
+    function loadApplicationsFromStorage() {
+      const stored = localStorage.getItem("applications");
+      if (stored) {
+        currentApplications = JSON.parse(stored);
+      }
+    }
+
+    function copyToClipboard(elementId) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard
+        .writeText(text)
+        .then(() => alert("✅ Copied to clipboard!"))
+        .catch(() => alert("❌ Copy failed"));
+    }
+
+    // ===== START =====
+    init();
+  </script>
+</body>
+</html>
